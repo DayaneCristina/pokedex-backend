@@ -11,7 +11,7 @@ Para executar este projeto é necessário ter instalado:
 ## 💻 Como Rodar
 
 1. Clone este repositório.
-  `https://github.com/DayaneCristina/pokedex-back`
+  `https://github.com/DayaneCristina/pokedex-backend`
 2. Na raiz do pojeto rode o comando `docker-compose up -d`.
 3. Após os containers subirem, rode os comandos abaixo:
 
