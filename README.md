@@ -1,6 +1,6 @@
 # ![alt text](pokeball-rotate.png) Pokédex
 
-Este é um projeto de Pokédex que utiliza React.
+Este é um projeto de Pokédex que utiliza Laravel.
 
 ## 🧐 Observação: 
 
