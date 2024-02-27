@@ -1,0 +1,47 @@
+version: '3.1'
+services:
+    postgres:
+        container_name: pokedex.db
+        image: 'postgres:15-alpine'
+        working_dir: /app
+        volumes:
+            - '.:/app'
+            - postgres-data:/var/lib/postgresql/data
+        environment:
+            - POSTGRES_USER=root
+            - POSTGRES_PASSWORD=root
+            - POSTGRES_DB=pokedex
+        ports:
+            - '3004:5432'
+        networks:
+            - pokedex-network
+
+    webserver:
+        container_name: pokedex.server
+        image: 'nginx:alpine'
+        working_dir: /app
+        volumes:
+            - '.:/app'
+            - './docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf'
+        ports:
+            - '3333:80'
+        networks:
+            - pokedex-network
+
+    php-fpm:
+        container_name: pokedex.api
+        build: docker/php-fpm
+        working_dir: /app
+        volumes:
+            - '.:/app'
+            - './docker/php-fpm/php-ini-overrides.ini:/etc/php/8.3/fpm/conf.d/99-overrides.ini'
+        networks:
+            - pokedex-network
+
+networks:
+    pokedex-network:
+        external: false
+
+volumes:
+    postgres-data:
+        external: false
