@@ -18,4 +18,9 @@ class UserService
     {
         $this->repository->register($userDTO);
     }
+
+    public function testeRollback()
+    {
+        return "Teste";
+    }
 }
